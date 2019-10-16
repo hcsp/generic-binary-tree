@@ -37,11 +37,10 @@ public class Main {
     }
 
     private static <T> void traversal(BinaryTreeNode<T> root, List<T> result) {
-        if (root == null) {
-            return;
+        if (root != null) {
+            traversal(root.left, result);
+            result.add(root.value);
+            traversal(root.right, result);
         }
-        traversal(root.left, result);
-        result.add(root.value);
-        traversal(root.right, result);
     }
 }
