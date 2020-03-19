@@ -1,6 +1,5 @@
 package com.github.hcsp.generics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -23,28 +22,10 @@ public class Main {
     }
 
     // 你看，上面三种"二叉树节点"结构相似，内容重复，请将其泛型化，以节省代码
-    static class BinaryTreeNode<T> {
-        T value;
-        BinaryTreeNode<T> left;
-        BinaryTreeNode<T> right;
-    }
+    static class BinaryTreeNode<T> {}
 
     // 泛型化之后，请再编写一个算法，对二叉树进行中序遍历，返回中序遍历的结果
     public static <T> List<T> inorderTraversal(BinaryTreeNode<T> root) {
-        List<T> res = new ArrayList<>();
-        recursive(root, res);
-        return res;
-    }
-
-    private static <T> void recursive(BinaryTreeNode<T> root, List<T> res) {
-        if (root != null) {
-            if (root.left != null) {
-                recursive(root.left, res);
-            }
-            res.add(root.value);
-            if (root.right != null) {
-                recursive(root.right, res);
-            }
-        }
+        return null;
     }
 }
