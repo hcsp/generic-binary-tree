@@ -1,8 +1,5 @@
 package com.github.hcsp.generics;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 public class Main {
@@ -25,44 +22,10 @@ public class Main {
     }
 
     // 你看，上面三种"二叉树节点"结构相似，内容重复，请将其泛型化，以节省代码
-    static class BinaryTreeNode<T> {
-        T value;
-        BinaryTreeNode<T> left;
-        BinaryTreeNode<T> right;
-    }
+    static class BinaryTreeNode<T> {}
 
     // 泛型化之后，请再编写一个算法，对二叉树进行中序遍历，返回中序遍历的结果
     public static <T> List<T> inorderTraversal(BinaryTreeNode<T> root) {
-        List<T> list = new ArrayList<>();
-        // inorderRecursive(root, list); // 递归
-        inorderWithStack(root, list);
-        return list;
-    }
-
-    private static <T> void inorderWithStack(BinaryTreeNode<T> root, List<T> list) {
-        Deque<BinaryTreeNode<T>> stack = new ArrayDeque();
-
-        BinaryTreeNode<T> current = root;
-
-        while (!stack.isEmpty() || current != null) {
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
-            }
-
-            current = stack.pop();
-            list.add(current.value);
-            current = current.right;
-        }
-    }
-
-    private static <T> void inorderRecursive(BinaryTreeNode<T> treeNode, List<T> list) {
-        if (treeNode == null) {
-            return;
-        }
-
-        inorderRecursive(treeNode.left, list);
-        list.add(treeNode.value);
-        inorderRecursive(treeNode.right, list);
+        return null;
     }
 }
