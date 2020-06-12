@@ -56,7 +56,6 @@ public class Main {
         }
     }
 
-
     private static <T> void inorderRecursive(BinaryTreeNode<T> treeNode, List<T> list) {
         if (treeNode == null) {
             return;
