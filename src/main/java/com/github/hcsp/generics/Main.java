@@ -2,7 +2,6 @@ package com.github.hcsp.generics;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Main {
     static class IntBinaryTreeNode {
@@ -31,23 +30,38 @@ public class Main {
     }
 
     // 泛型化之后，请再编写一个算法，对二叉树进行中序遍历，返回中序遍历的结果
+
+    //非递归
+//    public static <T> List<T> inorderTraversal(BinaryTreeNode<T> root) {
+//        Stack<BinaryTreeNode<T>> stack = new Stack<>();
+//        ArrayList<T> result = new ArrayList<>();
+//        BinaryTreeNode<T> node = root;
+//        do {
+//            while (node != null) {
+//                stack.push(node);
+//                node = node.left;
+//            }
+//            node = stack.pop();
+//            result.add(node.value);
+//            node = node.right;
+//        } while (!stack.isEmpty() || node != null);
+//        return result;
+//    }
+
+    //递归
+    public static <T> void inorderTraversalRecursion(BinaryTreeNode<T> node, List<T> result) {
+        if (node.left != null) {
+            inorderTraversalRecursion(node.left, result);
+        }
+        result.add(node.value);
+        if (node.right != null) {
+            inorderTraversalRecursion(node.right, result);
+        }
+    }
+
     public static <T> List<T> inorderTraversal(BinaryTreeNode<T> root) {
-        Stack<BinaryTreeNode<T>> stack = new Stack<>();
         ArrayList<T> result = new ArrayList<>();
-        BinaryTreeNode<T> node = root;
-        do {
-            while (node != null) {
-                stack.push(node);
-                node = node.left;
-            }
-            node = stack.pop();
-            result.add(node.value);
-            if (node.right != null) {
-                node = node.right;
-            } else {
-                node = null;
-            }
-        } while (!stack.isEmpty() || node != null);
+        inorderTraversalRecursion(root, result);
         return result;
     }
 }
