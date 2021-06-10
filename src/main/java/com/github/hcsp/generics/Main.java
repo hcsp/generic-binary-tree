@@ -37,7 +37,10 @@ public class Main {
         Deque<BinaryTreeNode<T>> stack = new ArrayDeque<>();
         BinaryTreeNode<T> node = root;
         while (true) {
-            goAlongLeftBranch(node, stack);
+            while (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
             if (stack.isEmpty()) {
                 break;
             }
@@ -48,11 +51,5 @@ public class Main {
         return result;
     }
 
-    public static <T> void goAlongLeftBranch(BinaryTreeNode<T> root, Deque<BinaryTreeNode<T>> stack) {
-        while (root != null) {
-            stack.push(root);
-            root = root.left;
-        }
-    }
 
 }
