@@ -1,6 +1,8 @@
 package com.github.hcsp.generics;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 public class Main {
@@ -32,15 +34,25 @@ public class Main {
     // 泛型化之后，请再编写一个算法，对二叉树进行中序遍历，返回中序遍历的结果
     public static <T> List<T> inorderTraversal(BinaryTreeNode<T> root) {
         List<T> result = new ArrayList<>();
-        recurseInorderTraversal(result, root);
+        Deque<BinaryTreeNode<T>> stack = new ArrayDeque<>();
+        BinaryTreeNode<T> node = root;
+        while (true) {
+            goAlongLeftBranch(node, stack);
+            if (stack.isEmpty()) {
+                break;
+            }
+            node = stack.poll();
+            result.add(node.value);
+            node = node.right;
+        }
         return result;
     }
 
-    private static <T> void recurseInorderTraversal(List<T> result, BinaryTreeNode<T> root) {
-        if (root != null) {
-            recurseInorderTraversal(result, root.left);
-            result.add(root.value);
-            recurseInorderTraversal(result, root.right);
+    public static <T> void goAlongLeftBranch(BinaryTreeNode<T> root, Deque<BinaryTreeNode<T>> stack) {
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
         }
     }
+
 }
