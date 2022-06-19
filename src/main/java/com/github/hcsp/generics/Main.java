@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    /*
     static class IntBinaryTreeNode {
         int value;
         IntBinaryTreeNode left;
@@ -21,6 +22,7 @@ public class Main {
         DoubleBinaryTreeNode left;
         DoubleBinaryTreeNode right;
     }
+     */
 
     // 你看，上面三种"二叉树节点"结构相似，内容重复，请将其泛型化，以节省代码
     static class BinaryTreeNode<T> {
