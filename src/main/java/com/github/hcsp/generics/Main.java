@@ -40,6 +40,5 @@ public class Main {
             list.addAll(inorderTraversal(root.right));
         }
         return list;
-
     }
 }
